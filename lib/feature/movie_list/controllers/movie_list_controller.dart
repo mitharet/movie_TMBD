@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:movie/feature/movie_list/models/movie_models.dart';
 import 'package:movie/feature/movie_list/services/movie_services.dart';
 
@@ -23,10 +24,22 @@ class MovieController extends GetxController {
     try {
       final response = await _service.fetchNowPlaying(currentPage.value);
       final newMovies = response.results.where((m) => m.posterPath.isNotEmpty).toList();
-      if (newMovies.isEmpty) {
+
+      // Simpan ke Hive
+      final box = Hive.box<MovieModels>('movies');
+      for (var movie in newMovies) {
+        box.put(movie.id, movie); // Update ke hive jika datanya ada berubah
+      }
+
+      // menghindari duplokat di tampilan
+      
+      final existingIds = movies.map((e) => e.id).toSet();
+      final uniqueMovies = newMovies.where((m) => !existingIds.contains(m.id)).toList();
+
+      if (uniqueMovies.isEmpty || currentPage.value >= response.totalPages) {
         hasMore.value = false;
       } else {
-        movies.addAll(newMovies);
+        movies.addAll(uniqueMovies);
         currentPage.value++;
       }
     } catch (e) {
@@ -35,4 +48,4 @@ class MovieController extends GetxController {
       isLoading.value = false;
     }
   }
-}
+} 
