@@ -48,10 +48,17 @@ Aplikasi ini dibuat untuk memenuhi requirement Home Test Mobile Engineer dengan 
 - Caching data movie menggunakan Hive sehingga aplikasi tetap dapat menampilkan data saat offline.
 - Optimasi UI agar responsif di berbagai ukuran layar.
 
-## Unit Testing (Belum Diimplementasi)
+## Unit Testing 
 - **MovieController Unit Test**
   - Fokus pada logika pencarian dan pemrosesan data dari Hive.
   - Menggunakan `hive_test` untuk mock Hive database saat testing agar tidak mengganggu data asli.
+- **FavoriteMovieController Unit Test**
+  - Fokus pada logika favorite dan pemrosesan data dari Hive.
+  - Menggunakan `hive_test` untuk mock Hive database saat testing agar tidak mengganggu data asli.
+- **SearchMovieController Unit Test**
+  - Fokus pada logika search dan pemrosesan data dari Hive karna search offline.
+  - Menggunakan `hive_test` untuk mock Hive database saat testing agar tidak mengganggu data asli.
+
 
 ## Catatan untuk Pengembangan Lanjutan
 - Menambahkan unit test untuk memastikan stabilitas aplikasi.
