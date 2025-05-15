@@ -3,8 +3,8 @@ export 'package:flutter/material.dart';
 export 'package:get/get.dart';
 // Controller
 export 'package:movie/feature/movie_favorite/controller/favorite_controller.dart';
-export 'package:movie/feature/movie_list/controllers/movie_list_controller.dart';
-export 'package:movie/feature/movie_list/controllers/bottom_nav_controller.dart';
+export 'package:movie/feature/movie_list/controller/movie_list_controller.dart';
+export 'package:movie/feature/movie_list/controller/bottom_nav_controller.dart';
 export 'package:movie/feature/movie_search/controller/search_controller.dart';
 // Model
 export 'package:movie/feature/movie_detail/models/movie_detail_models.dart';
