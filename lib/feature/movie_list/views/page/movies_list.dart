@@ -45,47 +45,53 @@ class MoviesPage extends StatelessWidget {
                     return const Center(child: CircularProgressIndicator());
                   }
                   final movie = controller.movies[index];
-                  return ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: Stack(
-                      children: [
-                        Image.network(
-                          'https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.posterPath}',
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                          height: double.infinity,
-                        ),
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Container(
-                            width: double.infinity,
-                            color: Colors.amber,
-                            padding: const EdgeInsets.all(8),
+                  return GestureDetector(
+                    onTap: () {
+                      // TODO ke Detail
+                    },
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Expanded(
+                            child: Image.network(
+                              'https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.posterPath}',
+                              fit: BoxFit.contain,
+                              width: double.infinity,
+                              height: double.infinity,
+                              errorBuilder: (_, __, ___) => Container(
+                                color: Colors.grey,
+                                child: const Icon(Icons.image,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
                             child: Column(
-                              mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  movie.originalTitle,
+                                  movie.title,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
                                   style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
+                                      fontWeight: FontWeight.bold),
                                 ),
-                                const SizedBox(height: 4),
                                 Text(
                                   movie.releaseDate,
                                   style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                  ),
+                                      fontWeight: FontWeight.w400),
                                 ),
                               ],
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },

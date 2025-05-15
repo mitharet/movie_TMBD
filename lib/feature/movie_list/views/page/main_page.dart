@@ -16,7 +16,7 @@ class _MainPageState extends State<MainPage> {
 
   final List<Map<String, dynamic>> _tabs = [
     {"label": "Movies", "icon": Icons.movie, "route": "/movies", "page":  MoviesPage()},
-    {"label": "Search", "icon": Icons.search, "route": "/search", "page": const SearchPage()},
+    {"label": "Search", "icon": Icons.search, "route": "/search", "page":  SearchPage()},
     {"label": "Favorite", "icon": Icons.favorite, "route": "/favorite", "page": const FavoritePage()},
   ];
 
