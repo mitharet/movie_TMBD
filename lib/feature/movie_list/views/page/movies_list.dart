@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movie/feature/movie_list/controllers/favorite_controller.dart';
 import 'package:movie/feature/movie_list/controllers/movie_list_controller.dart';
 
 class MoviesPage extends StatelessWidget {
   MoviesPage({super.key});
   final MovieController controller = Get.put(MovieController());
+  final FavoriteController favController = Get.put(FavoriteController());
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +89,19 @@ class MoviesPage extends StatelessWidget {
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w400),
                                 ),
+                                Obx(() {
+                                 final isFav = favController.favorites.any((fav) => fav.id == movie.id);
+                                  return IconButton(
+                                    icon: Icon(
+                                      isFav
+                                          ? Icons.favorite
+                                          : Icons.favorite_border,
+                                      color: isFav ? Colors.pink : Colors.grey,
+                                    ),
+                                    onPressed: () =>
+                                        favController.toggleFavorite(movie),
+                                  );
+                                }),
                               ],
                             ),
                           ),
