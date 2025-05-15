@@ -20,12 +20,23 @@ movieTMBD adalah aplikasi Flutter yang menampilkan daftar film dari [TMDB API](h
 
 ```
 lib/
+├── core/
+│   └── service/            # Service HTTP ke TMDB dan init Hive
 ├── feature/
-│   └── movie_list/
-│       ├── controllers/  # Logic dan state GetX
-│       ├── models/       # Model data (Movie, MovieDetail, dsb)
-│       ├── services/     # Service HTTP ke TMDB
-│       └── views/        # Widget dan UI untuk list/detail movie
+│   ├── movie_list/
+│   │   ├── controllers/  # Logic dan state GetX
+│   │   ├── models/       # Model data (Movie, MovieDetail, dsb)
+│   │   └── views/        # Widget dan UI untuk list/detail movie
+│   ├── movie_detail/
+│   │   ├── controllers/
+│   │   ├── models/
+│   │   └── views/
+│   ├── movie_search/
+│   │   ├── controllers/
+│   │   └── views/
+│   ├── movie_favorite/
+│   │   ├── controllers/
+│   │   └── views/
 ├── main.dart             # Entry point aplikasi
 ```
 
@@ -65,7 +76,7 @@ Kemudian digunakan saat memanggil endpoint TMDB:
 final url = 'https://api.themoviedb.org/3/movie/popular?api_key=$apiKey';
 ```
 
-> ⚠️ **Catatan:** Menyimpan API key langsung di kode hanya cocok untuk kebutuhan belajar atau testing. Untuk produksi, sebaiknya simpan di tempat yang lebih aman (misalnya menggunakan file `.env`, remote config, atau enkripsi lokal).
+> ⚠️ **Catatan:** Jadi tinggal ambil API Key sendiri ya untuk testnya.
 
 ## 📄 Lisensi
 

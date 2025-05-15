@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:movie/feature/movie_list/models/movie_models.dart';
-import 'package:movie/feature/movie_list/services/movie_services.dart';
+import 'package:movie/core/services/movie_services.dart';
 
 class MovieController extends GetxController {
   final movies = <MovieModels>[].obs;

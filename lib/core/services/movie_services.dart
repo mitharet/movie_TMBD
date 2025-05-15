@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../models/movie_response.dart';
+import '../../feature/movie_list/models/movie_response.dart';
 
 class MovieService {
   static const String _baseUrl = 'https://api.themoviedb.org/3';
