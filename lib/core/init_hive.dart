@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:movie/feature/movie_list/models/favorite_movie_models.dart';
+import 'package:movie/feature/movie_favorite/models/favorite_movie_models.dart';
 import 'package:movie/feature/movie_list/models/movie_models.dart';
 import 'package:path_provider/path_provider.dart';
 

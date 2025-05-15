@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:movie/feature/movie_list/views/pages.dart';
-
+import 'package:movie/core/export.dart';
 
 
 class MainPage extends StatefulWidget {

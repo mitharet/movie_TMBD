@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:movie/feature/movie_list/models/movie_models.dart';
@@ -8,6 +9,7 @@ class MovieController extends GetxController {
   final isLoading = false.obs;
   final currentPage = 1.obs;
   final hasMore = true.obs;
+  final searchController = TextEditingController();
 
   final MovieService _service = MovieService();
 
@@ -47,5 +49,18 @@ class MovieController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  void searchMovie(String query) async {
+    isLoading.value = true;
+    final box = Hive.box<MovieModels>('movies');
+    final allMovies = box.values.toList();
+
+    final filtered = allMovies.where((movie) =>
+      movie.title.toLowerCase().contains(query.toLowerCase())
+    ).toList();
+
+    movies.assignAll(filtered);
+    isLoading.value = false;
   }
 } 

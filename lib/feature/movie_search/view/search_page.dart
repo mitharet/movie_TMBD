@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:movie/feature/movie_list/controllers/search_controller.dart';
+
+import 'package:movie/core/export.dart';
 
 class SearchPage extends StatelessWidget {
   SearchPage({super.key});

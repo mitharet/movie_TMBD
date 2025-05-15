@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:movie/feature/movie_detail/models/movie_detail_models.dart';
 import 'package:movie/feature/movie_list/models/movie_models.dart';
 part 'favorite_movie_models.g.dart';
 
@@ -82,6 +83,25 @@ class FavoriteMovieModels extends HiveObject {
       );
 
   factory FavoriteMovieModels.fromMovie(MovieModels movie) {
+    return FavoriteMovieModels(
+      id: movie.id,
+      title: movie.title,
+      overview: movie.overview,
+      posterPath: movie.posterPath,
+      backdropPath: movie.backdropPath,
+      releaseDate: movie.releaseDate,
+      voteAverage: movie.voteAverage,
+      voteCount: movie.voteCount,
+      genreIds: List<int>.from(movie.genreIds),
+      adult: movie.adult,
+      originalLanguage: movie.originalLanguage,
+      originalTitle: movie.originalTitle,
+      popularity: movie.popularity,
+      video: movie.video,
+    );
+  }
+
+  factory FavoriteMovieModels.fromMovieDetail(MovieDetailModels movie) {
     return FavoriteMovieModels(
       id: movie.id,
       title: movie.title,

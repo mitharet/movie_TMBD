@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:movie/feature/movie_list/models/favorite_movie_models.dart';
+import 'package:movie/feature/movie_favorite/models/favorite_movie_models.dart';
+import 'package:movie/feature/movie_detail/models/movie_detail_models.dart';
 import 'package:movie/feature/movie_list/models/movie_models.dart';
 
 class FavoriteController extends GetxController {
@@ -29,6 +30,15 @@ class FavoriteController extends GetxController {
       _box.delete(movie.id);
     } else {
       final favMovie = FavoriteMovieModels.fromMovie(movie);
+      _box.put(movie.id, favMovie);
+    }
+  }
+
+  void toggleFavoriteDetail(MovieDetailModels movie) {
+    if (_box.containsKey(movie.id)) {
+      _box.delete(movie.id);
+    } else {
+      final favMovie = FavoriteMovieModels.fromMovieDetail(movie);
       _box.put(movie.id, favMovie);
     }
   }
